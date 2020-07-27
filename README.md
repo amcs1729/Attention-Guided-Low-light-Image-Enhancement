@@ -50,7 +50,8 @@ What makes this model much better is a combined loss function. It combines-
 * Context Loss - The output image produced by the model and the original bright image are fed into a VGG model with the last fully connected layer removed and the output of 'block3_conv4' is taken and then their MAE is taken
 * Structure Loss - The SSIM and MS-SSIM is calculated between the original bright image and the image produced by the model. Structure Loss = 6 - (SSIM + MS-SSIM)
 * Region Loss - Since the darker parts of the origin low light image need more attention , this loss calculates the MAE between the output and true bright image and gives 4 times more weight on 40% of the darkest pixels.
-\
+
+
 The final loss is calculated as a combination of Context Loss , Region Loss and Structure Loss
 
 
