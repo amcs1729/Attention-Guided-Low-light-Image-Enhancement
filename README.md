@@ -7,6 +7,10 @@ Attention Guided Low light Image Enhancement
 
 Given an image captured in insufficient and low light , restore it back , creating minimum noise or other distortions
 
+## What's the need for creating this Model
+The traditional methods use Histogram Equalization techniques which is not very effective. Another type of models that are based omn the Rertinex theory introduce significant noise in the produced image. This is primiarily because low light regions need special attention which is not given in those methods. In this implementation of the model described in [1] , special attention is given to lowest brightness images and a combined loss function is used as described later. The results thus inferred are quiet good.
+
+
 ## Results
 
 ![Low light Image](https://github.com/amcs1729/Attention-Guided-Low-light-Image-Enhancement/blob/master/Images/Results/download.png)
@@ -33,6 +37,17 @@ Given an image captured in insufficient and low light , restore it back , creati
 **Mean PSNR**  -  30.41332\
 **Mean SSIM**  -   0.60365\
 **Mean MAE**   -  25.25668
+
+## Brief Discussion 
+
+### The Model
+The model implemented is in multi-branch fashion. The input is a low light image and the output is an enhanced and clean imaeg of the same dimension.
+The model architecture is as shown below.
+![Model Architecture]https://github.com/amcs1729/Attention-Guided-Low-light-Image-Enhancement/blob/master/Images/model_structure.png)
+
+### The Loss function
+What makes this model much better is a combined loss function. It combines-
+* VGG Loss - The output image produced by the model and the original bright image are fed into a VGG
 
 
 ## References
