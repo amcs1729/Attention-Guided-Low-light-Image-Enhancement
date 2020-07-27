@@ -7,8 +7,8 @@ Attention Guided Low light Image Enhancement
 
 Given an image captured in insufficient and low light , restore it back , creating minimum noise or other distortions
 
-## What's the need for creating this Model
-The traditional methods use Histogram Equalization techniques which is not very effective. Another type of models that are based omn the Rertinex theory introduce significant noise in the produced image. This is primiarily because low light regions need special attention which is not given in those methods. In this implementation of the model described in [1] , special attention is given to lowest brightness images and a combined loss function is used as described later. The results thus inferred are quiet good.
+## What's the need for creating this Model?
+The traditional methods use Histogram Equalization techniques which is not very effective. Another type of models that are based on the Retinex theory introduce significant noise in the produced image. This is primiarily because low light regions need special attention which is not given in those methods. In this implementation of the model described in [1] , special attention is given to lowest brightness images and a combined loss function is used as described later. The results thus inferred are quiet good.
 
 
 ## Results
@@ -47,7 +47,7 @@ The model architecture is as shown below.
 
 ### The Loss function
 What makes this model much better is a combined loss function. It combines-
-* VGG Loss - The output image produced by the model and the original bright image are fed into a VGG
+* VGG Loss - The output image produced by the model and the original bright image are fed into a VGG model with the last fully connected layer removed and take the output of 'block3_conv4'.
 
 
 ## References
