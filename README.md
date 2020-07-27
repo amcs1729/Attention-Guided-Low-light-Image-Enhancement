@@ -40,23 +40,23 @@ The traditional methods use Histogram Equalization techniques which is not very 
 ## Brief Discussion 
 
 ### The Model
-The model implemented is in multi-branch fashion. The input is a low light image and the output is an enhanced and clean imaeg of the same dimension.
+The model implemented is in multi-branch fashion. The input is a low light image and the output is an enhanced and clean image of the same dimensions.
 The model architecture is as shown below.
 
 ![Model Architecture](https://github.com/amcs1729/Attention-Guided-Low-light-Image-Enhancement/blob/master/Images/model_structure.png)
 
 ### The Loss function
 What makes this model much better is a combined loss function. It combines-
-* Context Loss - The output image produced by the model and the original bright image are fed into a VGG model with the last fully connected layer removed and the output of 'block3_conv4' is taken and then their MAE is taken
+* Context Loss - The output image produced by the model and the original bright image are fed into a VGG model and the output of 'block3_conv4' is taken and then their MAE is taken as the context loss.
 * Structure Loss - The SSIM and MS-SSIM is calculated between the original bright image and the image produced by the model. Structure Loss = 6 - (SSIM + MS-SSIM)
-* Region Loss - Since the darker parts of the origin low light image need more attention , this loss calculates the MAE between the output and true bright image and gives 4 times more weight on 40% of the darkest pixels.
+* Region Loss - Since the darker parts of the original low light image need more attention , this loss calculates the MAE between the output and true bright image and gives 4 times more weight on 40% of the darkest pixels.
 
 
 The final loss is calculated as a combination of Context Loss , Region Loss and Structure Loss
 
 ## Implementation Details
 
-Dataset - LOL Dataset is used fro this project. It contains (485\*2) images, 485 low lighth images and their corresponding bright images for training.The testing was done with 15 images, the outputs of some of which are attached above. \
+Dataset - LOL Dataset is used for training and testing purpose. It contains (485\*2) images, 485 low lighth images and their corresponding bright images for training.The testing was done with 15 images, the outputs of some of which are attached above. \
  \
 Hardware - I used the Kaggle Platform for training which provides 16 GB Nvidia Titan X GPU and 13 GB of RAM. \
  \
