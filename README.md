@@ -1,4 +1,15 @@
-# Attention-Guided-Low-light-Image-Enhancement
+# Attention Guided Low light Image Enhancement
+
+## Project Name
+Attention Guided Low light Image Enhancement
+
+## Objective
+
+Given an image captured in insufficient and low light , restore it back , creating minimum noise or other distortions
+
+## Results
+
+
 ## References
 <a id="1">[1]</a> 
 MBLLEN: Low-light Image/Video Enhancement Using CNNs by
