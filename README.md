@@ -5,8 +5,7 @@ Attention Guided Low light Image Enhancement
 
 ## Objective
 
-Given an image captured in insufficient and low light , restore it back , creating minimum noise or other distortions
-
+Given an image captured in insufficient and low light , produce an enhanced and brighter version.
 ## What's the need for creating this Model?
 The traditional methods use Histogram Equalization techniques which is not very effective. Another type of models that are based on the Retinex theory introduce significant noise in the produced image. This is primiarily because low light regions need special attention which is not given in those methods. In this implementation of the model described in [1] , special attention is given to lowest brightness images and a combined loss function is used as described later. The results thus inferred are quiet good.
 
@@ -43,7 +42,8 @@ The traditional methods use Histogram Equalization techniques which is not very 
 ### The Model
 The model implemented is in multi-branch fashion. The input is a low light image and the output is an enhanced and clean imaeg of the same dimension.
 The model architecture is as shown below.
-![Model Architecture]https://github.com/amcs1729/Attention-Guided-Low-light-Image-Enhancement/blob/master/Images/model_structure.png)
+
+![Model Architecture](https://github.com/amcs1729/Attention-Guided-Low-light-Image-Enhancement/blob/master/Images/model_structure.png)
 
 ### The Loss function
 What makes this model much better is a combined loss function. It combines-
@@ -54,6 +54,13 @@ What makes this model much better is a combined loss function. It combines-
 
 The final loss is calculated as a combination of Context Loss , Region Loss and Structure Loss
 
+## Implementation Details
+
+Dataset - LOL Dataset is used fro this project. It contains (485\*2) images, 485 low lighth images and their corresponding bright images for training.The testing was done with 15 images, the outputs of some of which are attached above. \
+ \
+Hardware - I used the Kaggle Platform for training which provides 16 GB Nvidia Titan X GPU and 13 GB of RAM. \
+ \
+Training - The images were resized to (256,256,3) shape for using as input to the model.The training was done using Batch Size of 32 and a initial learning rate of 0.001 using Adam optimizer. The learning rate was reduced when plateau is reached using keras callbacks. The model was trained for 232 epochs, after which the model stopped improving.
 
 ## References
 <a id="1">[1]</a> 
