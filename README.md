@@ -58,7 +58,7 @@ The final loss is calculated as a combination of Context Loss , Region Loss and 
 
 Dataset - LOL Dataset is used for training and testing purpose. It contains (485\*2) images, 485 low lighth images and their corresponding bright images for training.The testing was done with 15 images, the outputs of some of which are attached above. \
  \
-Hardware - I used the Kaggle Platform for training which provides 16 GB Nvidia Titan X GPU and 13 GB of RAM. \
+Hardware - I used the Kaggle Platform for training which provides 16 GB Nvidia Tesla P100 GPU and 13 GB of RAM. \
  \
 Training - The images were resized to (256,256,3) shape for using as input to the model.The training was done using Batch Size of 32 and a initial learning rate of 0.001 using Adam optimizer. The learning rate was reduced when plateau is reached using keras callbacks. The model was trained for 232 epochs, after which the model stopped improving.
 
